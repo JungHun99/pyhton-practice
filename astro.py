@@ -12,7 +12,7 @@ score.up()
 score.goto(300,300)
 
 def make(count,feed):
-    for i in range(count):
+    for f in range(count):
         f=turtle.Turtle()
         f.shape("circle")
         f.up()
