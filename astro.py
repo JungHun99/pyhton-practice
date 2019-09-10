@@ -38,6 +38,14 @@ while(1):
     player.fd(10)
     turtle.onkeypress(left,"Left")
     turtle.onkeypress(right,"Right")
+    if(((player.xcor()<300) and (player.xcor()>-300)) and (player.ycor()>300)):
+        player.setheading(player.heading()-180)
+    if(((player.xcor()<300) and (player.xcor()>-300)) and (player.ycor()<-300)):
+        player.setheading(player.heading()-180)
+    if(((player.ycor()<300) and (player.ycor()>-300)) and (player.xcor()<-300)):
+        player.setheading(player.heading()-180)
+    if(((player.ycor()<300) and (player.ycor()>-300)) and (player.xcor()>300)):
+        player.setheading(player.heading()-180)
     for f in range(len(feed)):
         if(15>((player.xcor()-feed[f].xcor())**2+((player.ycor()-feed[f].ycor())**2))**0.5):
             feed[f].ht()
