@@ -4,7 +4,7 @@ def append(name,number,habit,no,adrress):
     global dic
     a=0
     for i in dic:
-        if i in name:
+        if(-1 != i.find(name)):
             a+=1
     if(a==0):
         dic[name]=[number,habit,no,address]
