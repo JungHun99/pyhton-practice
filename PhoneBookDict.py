@@ -9,13 +9,38 @@ def append(name,number,habit,no,adrress):
     if(a==0):
         dic[name]=[number,habit,no,address]
     else:
-        dic[name+str(a)]=[number,habit,no,address]
+        dic[name+" "+str(a)]=[number,habit,no,address]
 
-def search(key):
+def search():
     global dic
-    for name in dic:
-        if(-1 != name.find(key)):
-            print("이름:",name," 번호:",dic[name][0]," 취미:",dic[name][1],"학번: ",dic[name][2]," 주소: ",dic[name][3])
+    print("어떤 것을 검색 하시겠습니까?")
+    n= int(input("1.이름 2.번호 3.취미 4.학번 5.주소"))
+    if(n==1):
+        name=input("이름을 입력해주세요")
+        for i in dic:
+            if(-1 != i.find(name)):
+                print("이름:",i," 번호:",dic[i][0]," 취미:",dic[i][1],"학번: ",dic[i][2]," 주소: ",dic[i][3])
+    if(n==2):
+        name=input("번호를 입력해주세요")
+        for i in dic:
+            if(name == dic[i][0]):
+                print("이름:",i," 번호:",dic[i][0]," 취미:",dic[i][1],"학번: ",dic[i][2]," 주소: ",dic[i][3])
+    if(n==3):
+        name=input("취미를 입력해주세요")
+        for i in dic:
+            if(name == dic[i][1]):
+                print("이름:",i," 번호:",dic[i][0]," 취미:",dic[i][1],"학번: ",dic[i][2]," 주소: ",dic[i][3])
+    if(n==4):
+        name=input("학번을 입력해주세요")
+        for i in dic:
+            if(name == dic[i][2]):
+                print("이름:",i," 번호:",dic[i][0]," 취미:",dic[i][1],"학번: ",dic[i][2]," 주소: ",dic[i][3])
+    if(n==5):
+        name=input("주소를 입력해주세요")
+        for i in dic:
+            if(name == dic[i][3]):
+                print("이름:",i," 번호:",dic[i][0]," 취미:",dic[i][1],"학번: ",dic[i][2]," 주소: ",dic[i][3])
+
 
 def delete(key):
     global dic
@@ -63,8 +88,7 @@ while(1):
         address=input("주소를 입력해주세요")
         append(name,number,habit,no,address)
     if(n==2):
-        name=input("이름을 입력해주세요")
-        search(name)
+        search()
     if(n==3):
         name=input("이름을 입력해주세요")
         delete(name)
