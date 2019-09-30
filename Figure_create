@@ -1,0 +1,102 @@
+from tkinter import*
+
+window=Tk()
+
+count=0
+
+can=Canvas(window,width=600,height=600)
+
+def line(x,y):
+    can.create_line(x,y,x+100,y+100)
+
+def oval(x,y):
+    can.create_oval(x,y,x+100,y+100)
+
+def rec(x,y):
+    can.create_rectangle(x,y,x+100,y+100)
+
+def arc(x,y):
+    can.create_arc(x-50,y-50,x+50,y+50)
+
+def poly(x,y):
+    can.create_polygon(x, y, x+120, y+120, x+180, y+120,x-20,y+50,x-30,y-10)
+
+def text(x,y):
+    can.create_text(x,y,text="dsadadklsa")
+
+def img(x,y):
+    gif1 = PhotoImage(file='KOXOBiN.gif')
+    can.create_image(x,y,anchor=NW,image=gif1)
+
+def line_set():
+    global count
+    count=1
+
+def oval_set():
+    global count
+    count=2
+    
+def rec_set():
+    global count
+    count=3
+
+def arc_set():
+    global count
+    count=4
+
+def poly_set():
+    global count
+    count=5
+
+def text_set():
+    global count
+    count=6
+
+def img_set():
+    global count
+    count=7
+
+def mousedown(event):
+    global count
+    x1=0
+    y1=0
+    x1,y1=event.x,event.y
+    if(count==1):
+        line(x1,y1)
+    if(count==2):
+        oval(x1,y1)
+    if(count==3):
+        rec(x1,y1)
+    if(count==4):
+        arc(x1,y1)
+    if(count==5):
+        poly(x1,y1)
+    if(count==6):
+        text(x1,y1)
+    if(count==7):
+        img(x1,y1)
+
+can.bind("<Button-1>",mousedown)
+
+
+fp=Frame(window)
+but=Button(fp,text="line",command=line_set)
+but.grid()
+bu=Button(fp,text="oval",command=oval_set)
+bu.grid(row=0,column=2)
+bu=Button(fp,text="rec",command=rec_set)
+bu.grid(row=0,column=3)
+bu=Button(fp,text="arc",command=arc_set)
+bu.grid(row=0,column=4)
+bu=Button(fp,text="poly",command=poly_set)
+bu.grid(row=0,column=5)
+bu=Button(fp,text="text",command=text_set)
+bu.grid(row=0,column=6)
+bu=Button(fp,text="image",command=img_set)
+bu.grid(row=0,column=7)
+
+
+can.pack()
+fp.pack()
+
+window.mainloop()
