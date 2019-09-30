@@ -1,0 +1,57 @@
+from tkinter import*
+from tkinter.colorchooser import*
+
+window=Tk()
+
+count=0
+
+can=Canvas(window,width=300,height=300)
+
+def line(x,y):
+    can.create_line(x,y,x+100,y+100)
+
+def oval(x,y):
+    can.create_oval(x,y,x+100,y+100)
+
+def rec(x,y):
+    can.create_rectangle(x,y,x+100,y+100)
+
+def line_set():
+    global count
+    count=1
+
+def oval_set():
+    global count
+    count=2
+    
+def rec_set():
+    global count
+    count=3
+
+def mousedown(event):
+    global count
+    x1=0
+    y1=0
+    x1,y1=event.x,event.y
+    if(count==1):
+        line(x1,y1)
+    if(count==2):
+        oval(x1,y1)
+    if(count==3):
+        rec(x1,y1)
+
+can.bind("<Button-1>",mousedown)
+
+
+fp=Frame(window)
+but=Button(fp,text="line",command=line_set)
+but.grid()
+bu=Button(fp,text="oval",command=oval_set)
+bu.grid(row=0,column=2)
+bu=Button(fp,text="rec",command=rec_set)
+bu.grid(row=0,column=3)
+
+can.pack()
+fp.pack()
+
+window.mainloop()
